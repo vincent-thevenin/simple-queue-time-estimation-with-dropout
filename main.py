@@ -1,12 +1,12 @@
-import scipy
 import time
+import numpy as np
 
 def test():
     cum_time_list = [0, 120, 184]
     n_list = [294, 239, 200]
 
     n = n_list[-1]
-    estimate, _, _, _, rcond = scipy.polyfit(n_list, cum_time_list, 2, full=True)
+    estimate, _, _, _, rcond = np.polyfit(n_list, cum_time_list, 2, full=True)
 
     b = -estimate[0]*2
     a = -estimate[1]
@@ -60,7 +60,7 @@ def main():
             n_list.append(n)
 
             # predicting time left from start to now
-            estimate, _, _, _, rcond = scipy.polyfit(n_list, cum_time_list, 2, full=True)
+            estimate, _, _, _, rcond = np.polyfit(n_list, cum_time_list, 2, full=True)
 
             b = -estimate[0] * 2
             a = -estimate[1]
